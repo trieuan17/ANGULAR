@@ -1,0 +1,41 @@
+<div class="latest-products">
+    <div class="container " >
+     
+      <div class="row" >
+        
+        <div class="col-md-4" *ngFor="let i of data | paginate: { 
+        itemsPerPage: 9,
+        currentPage: page,
+        totalItems: totalenght } " >
+          <div class="product-item">
+            <a href="/chitiet/{{i._id}}"><img src="http://datlanh.herokuapp.com/assets/img/{{i.Image[0]}}" alt=""  ></a>
+            <div class="down-content">
+              <a href="#"><h4>{{i.Name}}</h4></a>
+              <h6>{{i.Price | number}} VNĐ  </h6>
+              
+              <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+              </ul>
+              <span (click)= "addcard(i._id)" class="cardplus">
+                <i class="fas fa-cart-plus" style="font-size: 32px;"></i>
+              </span>
+              
+            </div>
+          </div>
+        </div>
+        
+          
+        <pagination-controls   class="col-md-12 text-center  my-pagination"
+        (pageChange)="page =$event"
+       >
+        </pagination-controls>
+      </div>
+     
+     
+    </div>
+  </div>
+  

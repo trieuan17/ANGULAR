@@ -1,0 +1,56 @@
+<div class="den" *ngIf="data2" >
+ 
+  <i class="fas fa-window-close" (click)="clickden()"></i>
+    <ngb-carousel class="carousel"  *ngIf="image">
+      <ng-template ngbSlide *ngFor="let i of image">
+        <div class="picsum-img-wrapper">
+          <img [src]="i" alt="Random first slide" style="width: 100%; height: auto; ">
+        </div>
+      
+      </ng-template>
+   
+      
+    </ngb-carousel>
+
+    
+
+  
+
+
+
+</div>
+<div class="latest-products">
+  
+  <div class="container ">
+
+    <div class="card" *ngFor="let i of data">
+      <div class="card-body">
+        <h3 class="card-title">{{i.title}}</h3>
+        <h5 class="card-text" style="white-space: pre-line">{{i.Describe}}</h5>
+
+      </div>
+      <div class="image">
+        <div class="image_items" *ngFor="let video of i.Video">
+
+          <video width="320" height="240" controls>
+            <source src="http://datlanh.herokuapp.com/assets/video/{{video}}" type="video/mp4">
+          
+          </video>
+
+        </div>
+        <div class="image_items" *ngFor="let image of i.Image">
+
+          <img (click)="addclick(i._id)" class="card-img-bottom" src="http://datlanh.herokuapp.com/assets/video/{{image}}" alt="Card image cap">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+   
+  

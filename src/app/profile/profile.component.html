@@ -1,0 +1,112 @@
+<div class="container" >
+    <div class="jumbotron">
+        <h1 class="display-4">{{data.Name}}</h1>
+        <p class="lead">Trang thông tin User của bạn</p>
+        <hr class="my-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+            </div>
+            <input readonly type="text" value="{{data.Email}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+           
+        </div>
+       
+        
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+          </div>
+          
+          <input readonly type="text" value="{{data.Name}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <div class="input-group-prepend" *ngIf = "name">
+            <button class="btn btn-danger" (click)="nameclick()">Edit</button>
+          </div>
+          <div class="input-group-prepend" *ngIf = !name>
+            <button class="btn btn-danger" (click)="nameclick()">Hủy</button>
+          </div>
+          
+      </div>
+      <div *ngIf =!name>
+        <form id="nameform"(submit)="onSubmit()" #nameform="ngForm" >
+          
+            
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+              </div>
+              <input type="text" name="name" ngModel required minlength="1" id="name" aria-describedby="nameHid" class="form-control input_user" value="" placeholder="new Name" #name ="ngModel">
+            </div>
+            <small id="namelHid" *ngIf="!name?.valid" class="form-text text-danger "> Name is invalid or empty</small>
+            <div class="d-flex justify-content-center mt-3">
+              <button type="submit" class="btn btn-danger">Submit</button>
+            </div>
+            
+      </form>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Adress</span>
+        </div>
+        <input readonly type="text" value="{{data.Adress}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        <div class="input-group-prepend" *ngIf = "adress">
+          <button class="btn btn-danger" (click)="adressclick()">Edit</button>
+        </div>
+        <div class="input-group-prepend" *ngIf = !adress>
+          <button class="btn btn-danger" (click)="adressclick()">Hủy</button>
+        </div>
+    </div>
+    <div *ngIf =!adress>
+      <form id="adressform"(submit)="adressSubmit()" #adressform="ngForm" >
+        
+          
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Adress</span>
+            </div>
+            <input type="text" name="adress" ngModel required minlength="1" id="adress" aria-describedby="adressHid" class="form-control input_user" value="" placeholder="Adress" #adress ="ngModel">
+          </div>
+          <small id="adresslHid" *ngIf="!adress?.valid" class="form-text text-danger "> Adress is invalid or empty</small>
+          <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </div>
+          
+    </form>
+    </div>
+    <div class="input-group mb-3">
+      
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+      </div>
+      <input readonly type="text" value="{{data.Phone}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+      <div class="input-group-prepend" *ngIf = "phone">
+        <button class="btn btn-danger" (click)="phoneclick()">Edit</button>
+      </div>
+      <div class="input-group-prepend" *ngIf = !phone>
+        <button class="btn btn-danger" (click)="phoneclick()">Hủy</button>
+      </div>
+      
+    </div>
+    <div *ngIf =!phone>
+      <form id="phoneform"(submit)="phoneSubmit()" #phoneform="ngForm" >
+        
+          
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+          </div>
+          <input type="text" name="phone" ngModel required minlength="1" id="phone" aria-describedby="phoneHid" class="form-control input_user" value="" placeholder="phone" #phone ="ngModel">
+        </div>
+        <small id="phonelHid" *ngIf="!phone?.valid" class="form-text text-danger "> Phone is invalid or empty</small>
+        <div class="d-flex justify-content-center mt-3">
+          <button type="submit" class="btn btn-danger">Submit</button>
+        </div>
+        
+  </form>
+    </div>
+        
+    
+        <p class="d-flex justify-content-center mt-3">
+          <a class="btn btn-primary btn-lg" routerLink="/changepassword" role="button">Thay đổi mật khẩu</a>
+        </p>
+      </div>
+</div>

@@ -1,0 +1,54 @@
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>  
+<!-- ***** Preloader End ***** -->
+
+<!-- Header -->
+
+  <header >
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" routerLink ="/"><h2>Đất LÀnh</h2></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item  active" data-filter="*" >
+              <a class="nav-link" routerLink ="/">Trang chủ
+                <span class="sr-only">(current)</span>
+              </a>
+            </li> 
+            
+            
+            <li class="nav-item"  >
+              <a class="nav-link" href="/lienhe">Liên hệ</a>
+            </li>
+            <li class="nav-item" *ngIf="!data.data"  >
+              <a class="nav-link"routerLink ="/login">Đăng nhập</a>
+            </li>
+            
+            <li class="nav-item" *ngIf="!data.data"  >
+              <a class="nav-link"routerLink ="/register">Đăng Ký</a>
+            </li>
+            
+            <li class="nav-item" *ngIf="data.data" >
+              <a routerLink ="/profile" title="profile"  class="nav-link">{{data.data.Name}} </a>
+            </li>
+            <li class="nav-item" *ngIf="data.data" >
+              <a class="nav-link"(click)="logout()"  >Đăng Xuất </a>
+            </li>
+            <li class="nav-item" *ngIf="data.data" >
+              <a class="nav-link" routerLink="/card"  ><i class="fas fa-shopping-cart"></i> {{soluong}} </a>
+            </li>
+           
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>

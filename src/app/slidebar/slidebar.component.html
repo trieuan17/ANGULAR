@@ -1,0 +1,21 @@
+<div class="container">
+ <div class="products">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="filters">
+        <ul>
+          <li class="active"> <a routerLink="">HOME</a> </li>
+          <li class="menu-items"><a routerLink="/post">Chia Sẻ Kinh Nghiệm</a> </li>
+         <li class="menu-items" *ngFor="let i of menu">{{i.title}}
+           <ul class="submenu">
+             <li *ngFor="let e of i.DSCon"><a (click)="clickcheck(e.title)">{{e.title}}</a></li>
+             
+           </ul>
+         </li>
+        </ul>
+      
+      </div>
+    </div>
+  </div>
+ </div>
+</div>

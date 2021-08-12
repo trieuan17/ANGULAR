@@ -1,0 +1,75 @@
+.image{
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+}
+.card-img-bottom{
+    width: 240px;
+    height: 240px;
+}
+
+.den{
+    
+    overflow: hidden;
+	background: #f33f3f54;
+	top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    
+    
+	position: fixed;
+	z-index: 9999999;
+	color: #fff;
+    
+    
+}
+.carousel{
+    left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	display: block;
+	position: absolute;
+	margin: auto;
+	width:40%;
+    z-index: 99999999;
+	
+    justify-content: center;
+    background-color: black;
+}
+
+.fa-window-close{
+    cursor: pointer;
+    font-size: 32px;
+    color: rgb(19, 18, 18);
+    position: absolute;
+    z-index: 500;
+    left: 20px;
+    top: 0;
+}
+@media (max-width: 768px) {
+    .carousel{
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        position: absolute;
+        margin: auto;
+        width:80%;
+        
+        
+        justify-content: center;
+        background-color: black;
+    }
+    .fa-window-close{
+        cursor: pointer;
+        font-size: 32px;
+        color: rgb(15, 14, 14);
+        position: absolute;
+        z-index: 500;
+        left: 4px;
+        top: 0;
+    }
+}

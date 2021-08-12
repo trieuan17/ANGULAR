@@ -1,0 +1,202 @@
+
+ 
+    <h2 class="text-center">Giỏ hàng</h2>
+    <div *ngIf="(data && myhoadon)">
+       <table id="cart" class="table table-hover table-condensed" > 
+           <thead> 
+            <tr> 
+             <th style="width:50%">Tên sản phẩm</th> 
+             <th style="width:10%">Giá</th> 
+             <th style="width:8%">Số lượng</th> 
+             <th style="width:22%" class="text-center">Thành tiền</th> 
+             <th style="width:10%"> </th> 
+            </tr> 
+           </thead> 
+           <tbody><tr *ngFor =" let i of data"> 
+            <td data-th="Product"> 
+             <div class="row"> 
+              <div class="col-sm-2 hidden-xs"><img src="http://localhost:3000/assets/img/{{i.IMAGE}}" class="img-responsive" width="80">
+              </div> 
+              <div class="col-sm-10"> 
+               <h4 class="nomargin">{{i.TEN}}</h4> 
+               
+              </div> 
+             </div> 
+            </td> 
+            <td data-th="Price">{{i.DONGIA | number}}đ</td> 
+            <td data-th="Quantity"><form>
+               <input class="form-control text-center" value="{{i.SOLUONG}}" type="number" name="changequality" #box (change)="somethingChanged(box.value,i.ID,i.IMAGE,i.THANHTIEN,i.DONGIA)">
+            </form>
+            </td> 
+            <td data-th="Subtotal" class="text-center">{{i.THANHTIEN | number}}đ</td> 
+            <td class="actions" data-th="">
+            
+             <button (click)="delete(i.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>
+             </button>
+            </td> 
+           </tr> 
+          
+           </tbody><tfoot> 
+             
+           
+            <tr> 
+             <td><a routerLink="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+             </td> 
+           
+             <td colspan="2" class="hidden-xs"> </td> 
+             <td class="hidden-xs text-center"><strong>Tổng tiền {{total | number}}đ</strong>
+             </td> 
+             <td><div (click)="dathang(name.value,sdt.value,diachi.value,profile._id)" class="btn btn-success btn-block">Đặt Hàng <i class="fa fa-angle-right"></i></div>
+             </td> 
+            
+             
+            </tr> 
+           </tfoot> 
+          </table>
+           
+          <form>
+            <div class="form-group">
+              <label >Tên người nhận hàng</label>
+              <input type="text" name="ten" #name value="{{profile.Name}}" class="form-control" >
+              
+            </div>
+            <div class="form-group">
+               <label for="exampleInputEmail1">Số điện thoại nhận hàng</label>
+               <input type="tel" name="sdt" class="form-control" value="{{profile.Phone}}" #sdt>
+               
+             </div>
+             <div class="form-group">
+               <label >Địa chỉ nhận hàng</label>
+               <input type="text" name="diachi" class="form-control" value="{{profile.Adress}}" #diachi>
+               
+             </div>
+           
+            
+            
+          </form>
+          <div (click)="xemdathang(profile._id)" class="btn btn-success btn-block">Đơn hàng của tôi <i class="fa fa-angle-right"></i></div> 
+   
+   
+   
+    
+    <div *ngIf="!(data && myhoadon)">
+     <h2 class="text-center" >Giỏ hàng trống</h2>
+     <div (click)="xemdathang(profile._id)" class="btn btn-success btn-block">Đơn hàng của tôi <i class="fa fa-angle-right"></i></div> 
+    
+    </div>
+     
+    
+   
+    
+   
+   </div>
+   
+     <div  >
+       <div  *ngFor =" let e of myhoadon; let idex = index">
+         <h2 *ngIf="e.Trangthai!=='danhan'" class="text-center">Hóa đơn </h2>
+         
+         <table id="cart" class="table table-hover table-condensed" *ngIf="e.Trangthai!=='danhan'" > 
+           <thead> 
+            <tr> 
+             <th style="width:50%">Tên sản phẩm</th> 
+             <th style="width:10%">Giá</th> 
+             <th style="width:8%">Số lượng</th> 
+             <th style="width:22%" class="text-center">Thành tiền</th> 
+             <th style="width:10%"> </th> 
+            </tr> 
+           </thead> 
+           
+           <tbody><tr *ngFor =" let i of e.sanpham" > 
+             
+            <td data-th="Product" > 
+             <div class="row"> 
+              <div class="col-sm-2 hidden-xs"><img src="http://datlanh.herokuapp.com/assets/img/{{i.IMAGE}}" class="img-responsive" width="80">
+              </div> 
+              <div class="col-sm-10"> 
+               <h4 class="nomargin">{{i.TEN}}</h4> 
+               
+              </div> 
+             </div> 
+            </td> 
+            <td data-th="Price">{{i.DONGIA | number}}đ</td> 
+            <td data-th="Quantity"><form>
+               <input class="form-control text-center" value="{{i.SOLUONG}}" readonly>
+            </form>
+            </td> 
+            <td data-th="Subtotal" class="text-center">{{i.THANHTIEN | number}}đ</td> 
+            <td class="actions" data-th="">
+            
+             
+            </td> 
+           </tr> 
+          
+           </tbody><tfoot> 
+             
+           </tfoot> 
+          </table>
+          <form *ngIf="e.Trangthai!=='danhan'" >
+           <button *ngIf="e.Trangthai!=='dagiao'"  type="button" class="btn btn-danger" (click)="huydonhang(e._id,e.Trangthai)">Hủy Đơn Hàng</button>
+           <button *ngIf="e.Trangthai==='dagiao'"  class="btn btn-danger" (click)="xoa(e._id)">xóa khỏi giỏ hàng</button>
+           <div class="form-group"*ngIf="e.Trangthai==='choduyet'">
+             <label >Trạng thái đơn hàng</label>
+             <input type="text" name="ten"  value="chờ xác nhận từ SHOP" class="form-control" readonly>
+             
+           </div>
+           <div class="form-group"*ngIf="e.Trangthai==='ok'">
+             <label >Trạng thái đơn hàng</label>
+             <input type="text" name="ten"  value="Đã xác nhận sản phẩm đang được tiến hành giao hàng" class="form-control" readonly>
+             
+           </div>
+           <div class="form-group"*ngIf="e.Trangthai==='dagiao'">
+             <label >Trạng thái đơn hàng</label>
+             <input type="text" name="ten"  value="Giao hàng thành công" class="form-control" readonly>
+             
+           </div>
+          
+           <div class="form-group" *ngIf="e.Trangthai==='choduyet'">
+             <label >Tổng tiền chưa gồm phí vận chuyển</label>
+             <input type="text" name="ten"  value="{{e.Total | number}}đ" class="form-control" readonly>
+             
+           </div>
+           <div class="form-group" *ngIf="e.Trangthai!=='choduyet'">
+             <label >Tổng tiền bao gồm phí vận chuyển</label>
+             <input type="text" name="ten"  value="{{e.Total| number}}đ" class="form-control" readonly>
+             
+           </div>
+           <div class="form-group "*ngIf="e.Trangthai==='choduyet'">
+             <label >Phí vận chuyển</label>
+             <input type="text" name="ten"  value="chờ SHOP xác nhận" class="form-control" readonly>
+             
+           </div>
+           <div class="form-group "*ngIf="e.Trangthai!=='choduyet'">
+             <label >Phí vận chuyển</label>
+             <input type="text" name="ten"  value="{{e.Phivanchuyen| number}}đ" class="form-control" readonly>
+             
+           </div>
+           <div class="form-group">
+             <label >Tên người nhận hàng</label>
+             <input type="text" name="ten"  value="{{e.NAME}}" class="form-control" readonly>
+             
+           </div>
+           <div class="form-group">
+              <label for="exampleInputEmail1">Số điện thoại nhận hàng</label>
+              <input type="tel" name="sdt" class="form-control" value="{{e.PHONE}}" readonly>
+              
+            </div>
+            <div class="form-group">
+              <label >Địa chỉ nhận hàng</label>
+              <input type="text" name="diachi" class="form-control" value="{{e.ADRESS}}" readonly>
+              
+            </div>
+          
+           
+           
+         </form>
+     
+           
+          
+       </div>
+       
+       
+     </div>
+   

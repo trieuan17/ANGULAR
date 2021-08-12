@@ -1,0 +1,63 @@
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png" class="brand_logo" alt="Logo">
+                </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form id="registerform"(submit)="onSubmit()" #registerform="ngForm">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="email" name="email" ngModel required minlength="6" id="email" aria-describedby="emailHid" class="form-control input_user" value="" placeholder="Email" #email ="ngModel">
+                        
+                       
+                    </div>
+                    <small id="emailHid" *ngIf="!email?.valid" class="form-text text-danger "> Email is invalid or empty</small>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" name="password" ngModel required minlength="2" id="password" aria-describedby="passwordHid" class="form-control input_pass" value="" placeholder="password" #password = "ngModel">
+                    </div>
+                    <small id="passwordHid" *ngIf="!password?.valid" class="form-text text-danger"> Password is invalid or empty</small>
+                    
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="text" name="name" ngModel required minlength="2" id="name" aria-describedby="nameHid" class="form-control input_pass" value="" placeholder="Name" #name = "ngModel">
+                    </div>
+                    <small id="nameHid" *ngIf="!name?.valid" class="form-text text-danger"> name is invalid or empty</small>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="text" name="address" ngModel required minlength="2" id="address" aria-describedby="addressHid" class="form-control input_pass" value="" placeholder="Adresss" #address = "ngModel">
+                    </div>
+                    <small id="addressHid" *ngIf="!address?.valid" class="form-text text-danger"> Address is invalid or empty</small>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="number" name="phone" ngModel required minlength="2" id="phone" aria-describedby="phoneHid" class="form-control input_pass" value="" placeholder="Phone" #phone = "ngModel">
+                    </div>
+                    <small id="phoneHid" *ngIf="!phone?.valid" class="form-text text-danger"> Address is invalid or empty</small>
+                    
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                 <button type="submit" name="button" class="btn login_btn">Register</button>
+               </div>
+                </form>
+               
+            </div>
+           
+    
+          
+        </div>
+    </div>
+</div>

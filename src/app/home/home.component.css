@@ -1,0 +1,37 @@
+/* .my-pagination  .ngx-pagination .current {
+    background: red;
+    margin-top: 30px;
+	  text-align: center;
+} */
+.my-pagination ul.ngx-pagination {
+    margin-top: 30px;
+	  text-align: center;
+}
+
+.my-pagination ul li {
+    display: inline-block;
+    margin: 0px 2px;
+}
+
+.my-pagination ul li a {
+    width: 44px;
+    height: 44px;
+    display: inline-block;
+    line-height: 42px;
+    border: 1px solid #eee;
+    font-size: 15px;
+    font-weight: 700;
+    color: #121212;
+    transition: all .3s;
+}
+
+.my-pagination ul li a:hover,
+.my-pagination ul li.active a {
+    background-color: #f33f3f;
+    border-color: #f33f3f;
+    color: #fff;
+}
+
+.cardplus{
+    cursor: pointer;
+}

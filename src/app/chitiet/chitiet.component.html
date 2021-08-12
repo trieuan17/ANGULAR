@@ -1,0 +1,49 @@
+<div class="best-features about-features">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Chi Tiết Sản Phẩm</h2>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="right-image  " >
+            
+           
+            
+              
+              <ngb-carousel *ngIf="myThumbnail">
+                <ng-template ngbSlide *ngFor="let image of myThumbnail">
+                  <div class="picsum-img-wrapper">
+                    <img [src]="image" alt="Random first slide" style="width: 100%; height: 328px;">
+                  </div>
+                  
+                </ng-template>
+                
+            
+              </ngb-carousel>
+              
+              
+             
+        </div>
+        </div>
+        <div class="col-md-6" >
+          <div class="left-content">
+            <h4>{{data.Name}}</h4>
+            <h4> Giá:{{data.Price | number}}VNĐ</h4>
+            <p>{{data.Describe}}</p>
+            <ul class="social-icons">
+              <li>
+                <span (click)= "addcard(data._id)" class="cardplus">
+                  <i class="fas fa-cart-plus" style="font-size: 32px;"></i>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
